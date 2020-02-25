@@ -10,11 +10,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Love Calculator',
-      initialRoute: SplashScreen.tag,
+      initialRoute: HomeScreen.tag,
       routes: {
         SplashScreen.tag: (context) => SplashScreen(),
         HomeScreen.tag: (context) => HomeScreen(),
       },
+      //theme: ThemeData(de),
     );
   }
 }

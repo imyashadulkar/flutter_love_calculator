@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_love_calculator/homescreen.dart';
 
 class SplashScreen extends StatefulWidget {
   static final String tag = '/SplashScreen';
@@ -8,7 +11,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   AnimationController _iconAnimationController;
   Animation<double> _iconAnimation;
 
@@ -16,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     _iconAnimationController = new AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 300),
+      duration: Duration(seconds: 3),
     );
 
     _iconAnimation = new CurvedAnimation(
@@ -27,7 +30,17 @@ class _SplashScreenState extends State<SplashScreen>
     );
     _iconAnimationController.forward();
 
+    startTime();
     super.initState();
+  }
+
+  startTime() async {
+    var _duration = Duration(seconds: 4);
+    return Timer(_duration, navigationScreen);
+  }
+
+  void navigationScreen() {
+    Navigator.of(context).pushReplacementNamed(HomeScreen.tag);
   }
 
   @override
@@ -54,6 +67,7 @@ class _SplashScreenState extends State<SplashScreen>
                     Image.asset(
                       'images/love1.png',
                       height: _iconAnimation.value * 500,
+                      width: _iconAnimation.value * 500,
                     ),
                     RichText(
                       textAlign: TextAlign.center,
@@ -71,6 +85,16 @@ class _SplashScreenState extends State<SplashScreen>
                             ),
                           ),
                         ],
+                      ),
+                    ),
+
+                    Text(
+                      'Know your Love for your Partner',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        textBaseline: TextBaseline.alphabetic,
                       ),
                     ),
                   ],
