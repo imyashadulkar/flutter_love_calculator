@@ -1,8 +1,10 @@
 # flutter_love_calculator
 
-A new Flutter application.
+It is a Flutter Application which gives the love percentage between two users.
 
-## Getting Started
+A person has to type his name and his Partner name and the app calculates the love percentage between them.
+
+## Learn Flutter
 
 This project is a starting point for a Flutter application.
 
