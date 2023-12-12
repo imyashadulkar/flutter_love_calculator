@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_love_calculator/aboutpage.dart';
 import 'package:flutter_love_calculator/homescreen.dart';
@@ -15,9 +14,7 @@ class MyApp extends StatelessWidget {
       routes: {
         SplashScreen.tag: (context) => SplashScreen(),
         HomeScreen.tag: (context) => HomeScreen(),
-        AboutPage.tag: (context) =>
-            AboutPage(
-            ),
+        AboutPage.tag: (context) => AboutPage(),
       },
       //theme: ThemeData(de),
     );
