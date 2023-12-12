@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_love_calculator/aboutpage.dart';
@@ -11,40 +10,30 @@ class HomeScreen extends StatefulWidget {
   static final String tag = '/HomeScreen';
 
   @override
-  _HomeScreenState createState() =>
-      _HomeScreenState(
-      );
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  TextEditingController _myName = new TextEditingController(
-  );
-  TextEditingController _partnerName = new TextEditingController(
-  );
-  String myName, partnerName;
-  String percentage;
+  TextEditingController _myName = new TextEditingController();
+  TextEditingController _partnerName = new TextEditingController();
+  String? myName, partnerName;
+  String? percentage;
 
   void _clear() {
-    setState(
-            () {
-          percentage = '';
-          _myName.clear(
-          );
-          _partnerName.clear(
-          );
-        }
-            );
+    setState(() {
+      percentage = '';
+      _myName.clear();
+      _partnerName.clear();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         elevation: 0.0,
         bottomOpacity: 0.0,
-        brightness: Brightness.dark,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -58,35 +47,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 Color(0xffcc2b5e),
                 Color(0xff753a88),
               ],
-              ),
             ),
           ),
+        ),
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: Text(
           'Love Calculator',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            ),
           ),
-        actionsIconTheme: IconThemeData(
-            opacity: 2.0
-            ),
+        ),
+        actionsIconTheme: IconThemeData(opacity: 2.0),
         actions: <Widget>[
           IconButton(
-            icon: Icon(
-                Icons.info
-                ),
+            icon: Icon(Icons.info),
             onPressed: () {
-              Navigator.of(
-                  context
-                  ).pushNamed(
-                  AboutPage.tag
-                  );
+              Navigator.of(context).pushNamed(AboutPage.tag);
             },
-            ),
+          ),
         ],
-        ),
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+      ),
       primary: true,
       body: Stack(
         fit: StackFit.expand,
@@ -100,8 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Color(0xffcc2b5e),
                   Color(0xff753a88),
                 ],
-                ),
               ),
+            ),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Center(
@@ -117,19 +99,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             'images/love1.png',
                             height: 400,
                             width: 400,
-                            ),
                           ),
                         ),
+                      ),
+                      getName(hint: 'Enter your Name', name: _myName),
                       getName(
-                          hint: 'Enter your Name', name: _myName
-                          ),
-                      getName(
-                          hint: 'Enter your Partner Name', name: _partnerName
-                          ),
+                          hint: 'Enter your Partner Name', name: _partnerName),
                       Padding(
-                        padding: const EdgeInsets.only(
-                            top: 10.0
-                            ),
+                        padding: const EdgeInsets.only(top: 10.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
@@ -137,99 +114,78 @@ class _HomeScreenState extends State<HomeScreen> {
                               'Heart',
                               FontAwesomeIcons.solidHeart,
                               Colors.red,
-                                  () {
-                                myName = _myName.text.toString(
-                                ).toLowerCase(
-                                );
+                              () {
+                                myName = _myName.text.toString().toLowerCase();
                                 partnerName =
-                                    _partnerName.text.toString(
-                                    ).toLowerCase(
-                                    );
-                                if (myName.length == 0 || partnerName == 0) {
-                                  print(
-                                      'Enter the Names'
-                                      );
-                                  alert(
-                                  );
+                                    _partnerName.text.toString().toLowerCase();
+                                if (myName!.length == 0 ||
+                                    partnerName!.isEmpty) {
+                                  print('Enter the Names');
+                                  alert();
                                 } else {
-                                  loveCalculator calc = loveCalculator(
-                                  );
-                                  String calculation =
-                                  calc.countChars(
-                                      myName, partnerName
-                                      );
-                                  print(
-                                      'calculation: ' + calculation
-                                      );
+                                  loveCalculator calc = loveCalculator();
+                                  String calculation = calc.countChars(
+                                      myName ?? "", partnerName ?? "");
+                                  print('calculation: ' + calculation);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              ResultPage(
-                                                  resultPercentage: calculation
-                                                  )
-                                          )
-                                      );
+                                          builder: (context) => ResultPage(
+                                              resultPercentage: calculation)));
                                 }
                               },
-                              ),
+                            ),
                             Button(
                               'Clear',
-                              FontAwesomeIcons.times,
+                              FontAwesomeIcons.xmark,
                               Colors.red,
                               _clear,
-                              ),
+                            ),
                           ],
-                          ),
                         ),
+                      ),
                     ],
-                    ),
                   ),
                 ),
               ),
             ),
+          ),
         ],
-        ),
-      );
+      ),
+    );
   }
 
   alert() {
     return showDialog(
       context: context,
-      child: AlertDialog(
-        title: Text(
-          'Enter the Names',
-          style: TextStyle(
-              color: Colors.black
-              ),
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          textDirection: TextDirection.ltr,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Enter the Names',
+            style: TextStyle(color: Colors.black),
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            textDirection: TextDirection.ltr,
           ),
-        actions: <Widget>[
-          FlatButton.icon(
-            onPressed: () {
-              Navigator.pop(
-                  context
-                  );
-            },
-            icon: Icon(
-              FontAwesomeIcons.solidThumbsUp,
-              color: Colors.redAccent,
+          actions: <Widget>[
+            TextButton.icon(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                FontAwesomeIcons.solidThumbsUp,
+                color: Colors.redAccent,
               ),
-            label: Text(
-                ''
-                ),
-            autofocus: true,
+              label: Text(''),
+              autofocus: true,
             ),
-        ],
-        elevation: 24.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-              24.0
-              ),
+          ],
+          elevation: 24.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24.0),
           ),
-        ),
-      );
+        );
+      },
+    );
   }
 }
