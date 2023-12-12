@@ -102,15 +102,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      getName(hint: 'Enter your Name', name: _myName),
-                      getName(
+                      GetName(hint: 'Enter your Name', name: _myName),
+                      GetName(
                           hint: 'Enter your Partner Name', name: _partnerName),
                       Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
-                            Button(
+                            button(
                               'Heart',
                               FontAwesomeIcons.solidHeart,
                               Colors.red,
@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   print('Enter the Names');
                                   alert();
                                 } else {
-                                  loveCalculator calc = loveCalculator();
+                                  LoveCalculator calc = LoveCalculator();
                                   String calculation = calc.countChars(
                                       myName ?? "", partnerName ?? "");
                                   print('calculation: ' + calculation);
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 }
                               },
                             ),
-                            Button(
+                            button(
                               'Clear',
                               FontAwesomeIcons.xmark,
                               Colors.red,

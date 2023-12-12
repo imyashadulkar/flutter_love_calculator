@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-IconButton Button(
+IconButton button(
   String buttonName,
   IconData iconData,
   Color buttonColor,
@@ -16,8 +16,8 @@ IconButton Button(
   );
 }
 
-class getName extends StatelessWidget {
-  const getName({
+class GetName extends StatelessWidget {
+  const GetName({
     Key? key,
     required this.hint,
     required TextEditingController name,

@@ -1,4 +1,4 @@
-class loveCalculator {
+class LoveCalculator {
   countChars(String firstName, String partnerName) {
     String combineName = firstName.toLowerCase().replaceAll(' ', '') +
         'loves' +
