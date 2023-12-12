@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import 'package:url_launcher/url_launcher_string.dart';
 
 class AboutPage extends StatelessWidget {
   static final String tag = '/AboutPage';
 
   _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
     } else {
       throw 'Could not launch $url';
     }
@@ -25,7 +27,6 @@ class AboutPage extends StatelessWidget {
         ),
         elevation: 0.0,
         bottomOpacity: 0.0,
-        brightness: Brightness.dark,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -44,6 +45,7 @@ class AboutPage extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         centerTitle: true,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       body: Stack(
         fit: StackFit.expand,
@@ -141,7 +143,7 @@ class AboutPage extends StatelessWidget {
                         ),
                         IconButton(
                           icon: Icon(
-                            FontAwesomeIcons.mediumM,
+                            FontAwesomeIcons.medium,
                             size: 35.0,
                             color: Colors.white,
                           ),
