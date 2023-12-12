@@ -8,11 +8,11 @@ class AboutPage extends StatelessWidget {
   static final String tag = '/AboutPage';
 
   _launchURL(String url) async {
-    if (await canLaunchUrlString(url)) {
-      await launchUrlString(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+    // if (await canLaunchUrlString(url)) {
+    await launchUrlString(url);
+    // } else {
+    //   throw 'Could not launch $url';
+    // }
   }
 
   @override
@@ -25,6 +25,7 @@ class AboutPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        foregroundColor: Colors.white,
         elevation: 0.0,
         bottomOpacity: 0.0,
         flexibleSpace: Container(
@@ -158,7 +159,8 @@ class AboutPage extends StatelessWidget {
                             color: Colors.white,
                           ),
                           onPressed: () async {
-                            await _launchURL('https://github.com/elaishane');
+                            await _launchURL(
+                                'https://github.com/imyashadulkar');
                           },
                         ),
                       ],
