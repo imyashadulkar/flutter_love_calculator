@@ -56,12 +56,14 @@ class _HomeScreenState extends State<HomeScreen> {
           'Love Calculator',
           style: TextStyle(
             fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
         actionsIconTheme: IconThemeData(opacity: 2.0),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.info),
+            color: Colors.white,
             onPressed: () {
               Navigator.of(context).pushNamed(AboutPage.tag);
             },
