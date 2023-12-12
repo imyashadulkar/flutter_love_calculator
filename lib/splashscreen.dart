@@ -12,8 +12,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
-  AnimationController _iconAnimationController;
-  Animation<double> _iconAnimation;
+  AnimationController? _iconAnimationController;
+  Animation<double>? _iconAnimation;
 
   @override
   void initState() {
@@ -23,12 +23,12 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     _iconAnimation = new CurvedAnimation(
-        parent: _iconAnimationController, curve: Curves.easeOut);
+        parent: _iconAnimationController!, curve: Curves.easeOut);
 
-    _iconAnimation.addListener(
+    _iconAnimation!.addListener(
       () => this.setState(() {}),
     );
-    _iconAnimationController.forward();
+    _iconAnimationController!.forward();
 
     startTime();
     super.initState();
@@ -66,8 +66,8 @@ class _SplashScreenState extends State<SplashScreen>
                   children: <Widget>[
                     Image.asset(
                       'images/love1.png',
-                      height: _iconAnimation.value * 500,
-                      width: _iconAnimation.value * 500,
+                      height: _iconAnimation!.value * 500,
+                      width: _iconAnimation!.value * 500,
                     ),
                     RichText(
                       textAlign: TextAlign.center,
@@ -87,7 +87,6 @@ class _SplashScreenState extends State<SplashScreen>
                         ],
                       ),
                     ),
-
                     Text(
                       'Know your Love for your Partner',
                       textAlign: TextAlign.center,
