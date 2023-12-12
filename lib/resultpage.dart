@@ -33,11 +33,13 @@ class ResultPage extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.transparent,
+        foregroundColor: Colors.white,
         centerTitle: true,
         title: Text(
           'Love Calculator',
           style: TextStyle(
             fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
         systemOverlayStyle: SystemUiOverlayStyle.light,
