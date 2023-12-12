@@ -125,15 +125,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                   print('Enter the Names');
                                   alert();
                                 } else {
-                                  LoveCalculator calc = LoveCalculator();
-                                  String calculation = calc.countChars(
-                                      myName ?? "", partnerName ?? "");
-                                  print('calculation: ' + calculation);
+                                  String calculation =
+                                      LoveCalculator.countChars(
+                                    myName ?? "",
+                                    partnerName ?? "",
+                                  );
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => ResultPage(
-                                              resultPercentage: calculation)));
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ResultPage(
+                                        resultPercentage: calculation,
+                                      ),
+                                    ),
+                                  );
                                 }
                               },
                             ),
@@ -159,35 +163,30 @@ class _HomeScreenState extends State<HomeScreen> {
 
   alert() {
     return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Enter the Names',
-            style: TextStyle(color: Colors.black),
-            textAlign: TextAlign.center,
-            maxLines: 1,
-            textDirection: TextDirection.ltr,
-          ),
-          actions: <Widget>[
-            TextButton.icon(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                FontAwesomeIcons.solidThumbsUp,
-                color: Colors.redAccent,
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text(
+                'Enter the Names',
+                style: TextStyle(color: Colors.black),
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                textDirection: TextDirection.ltr,
               ),
-              label: Text(''),
-              autofocus: true,
-            ),
-          ],
-          elevation: 24.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0),
-          ),
-        );
-      },
-    );
+              actions: <Widget>[
+                TextButton.icon(
+                  onPressed: () => Navigator.pop(context),
+                  icon: Icon(
+                    FontAwesomeIcons.solidThumbsUp,
+                    color: Colors.redAccent,
+                  ),
+                  label: Text(''),
+                  autofocus: true,
+                ),
+              ],
+              elevation: 24.0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24.0)));
+        });
   }
 }
