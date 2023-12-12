@@ -5,7 +5,7 @@ IconButton Button(
   String buttonName,
   IconData iconData,
   Color buttonColor,
-  Function _function,
+  VoidCallback _function,
 ) {
   return IconButton(
     icon: Icon(iconData),
@@ -18,9 +18,9 @@ IconButton Button(
 
 class getName extends StatelessWidget {
   const getName({
-    Key key,
-    @required this.hint,
-    @required TextEditingController name,
+    Key? key,
+    required this.hint,
+    required TextEditingController name,
   })  : _name = name,
         super(key: key);
 
@@ -34,7 +34,11 @@ class getName extends StatelessWidget {
       child: TextField(
         keyboardType: TextInputType.text,
         inputFormatters: [
-          WhitelistingTextInputFormatter(RegExp("[a-z A-Z]")),
+          // FilteringTextInputFormatter(RegExp("[a-z A-Z]")),
+          FilteringTextInputFormatter(
+            RegExp(r'[a-z,A-Z]'),
+            allow: true,
+          ),
         ],
         decoration: InputDecoration(
           hintText: hint,
