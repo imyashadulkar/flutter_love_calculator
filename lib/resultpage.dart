@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ResultPage extends StatelessWidget {
   static final String tag = '/ResultScreen';
@@ -6,7 +7,7 @@ class ResultPage extends StatelessWidget {
   final String resultPercentage;
 
   ResultPage({
-    @required this.resultPercentage,
+    required this.resultPercentage,
   });
 
   @override
@@ -15,7 +16,6 @@ class ResultPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         bottomOpacity: 0.0,
-        brightness: Brightness.dark,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -40,6 +40,7 @@ class ResultPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       body: Stack(
         children: <Widget>[
