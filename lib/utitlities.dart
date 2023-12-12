@@ -34,11 +34,7 @@ class GetName extends StatelessWidget {
       child: TextField(
         keyboardType: TextInputType.text,
         inputFormatters: [
-          // FilteringTextInputFormatter(RegExp("[a-z A-Z]")),
-          FilteringTextInputFormatter(
-            RegExp(r'[a-z,A-Z]'),
-            allow: true,
-          ),
+          FilteringTextInputFormatter(RegExp(r'[a-z,A-Z]'), allow: true),
         ],
         decoration: InputDecoration(
           hintText: hint,
